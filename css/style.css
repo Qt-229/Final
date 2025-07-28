@@ -1,35 +1,91 @@
-html{
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }
+
 body {
-    background-color: #dedede;
-    padding: 5px;
-    margin: 15px;
-    font-size: 25px;
-    font-family:Arial, sans-serif;
+  background-color: #dedede;
+  padding: 5px;
+  margin: 15px;
+  font-size: 25px;
+  font-family: Arial, sans-serif;
 }
 
 h1 {
-    text-align: center;
-    font-family:Arial, sans-serif;
-    font-size: 1.95em;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 1.95em;
 }
 
-h2{
-    text-align:center;
-  }
-
-li{
-    margin-top: 20px;
+h2 {
+  text-align: center;
 }
 
-img{
-    border: 5px solid blue;
-    border-radius: 35px;
-    width: 100%;
-  }
+li {
+  margin-top: 20px;
+}
 
-.label{
-    text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+img {
+  border: 5px solid blue;
+  border-radius: 35px;
+  width: 100%;
+}
+
+.label {
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* MOBILE-FIRST GRID: 1 column, 10px gap */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+figure {
+  /* Add any base figure styles here */
+}
+
+/* TABLET VIEW: 2 columns, circular figures, last spans both columns */
+@media (min-width: 772px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  figure {
+    border-radius: 50%;
+  }
+  .grid-container figure:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* LARGE SCREEN: 3rd figure spans both columns, remove border-radius */
+@media (min-width: 992px) {
+  figure {
+    border-radius: 0;
+  }
+  /* Every third figure spans both columns */
+  .grid-container figure:nth-child(3n) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* REDUCED MOTION: remove scroll behavior */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* DARK COLOR SCHEME */
+@media (prefers-color-scheme: dark) {
+  figure {
+    background-color: #222; /* or another dark color */
+    color: #ffe066; /* light yellow-ish for contrast */
+    border-color: #000; /* black border */
+  }
+  body {
+    background-color: #111;
+    color: #ffe066;
+  }
 }
